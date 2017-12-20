@@ -26,14 +26,14 @@ for a in blog: # Storing all posts in a list as links.
 	all_posts.append(astr)
 
 x = 0
-while x < len(all_posts)-1: # Storing all posts that are less than a week old in a list, with an accuracy of 1 minute.
+while x < len(all_posts): # Storing all posts that are less than a week old in a list, with an accuracy of 1 minute.
 	post = Post(str(all_posts[x]))
-	if post.time_elapsed() < datetime.timedelta(minutes=10080):
+	if post.time_elapsed() < datetime.timedelta(days=7):
 		acc_posts.append(all_posts[x])
 	x+= 1
 
 x = 0
-while x < len(acc_posts)-1: # Collecting rewards for each post and storing them in the "total" variable.
+while x < len(acc_posts): # Collecting rewards for each post and storing them in the "total" variable.
 	post = Post(acc_posts[x])
 	reward = str(post.reward)
 	reward = float(reward.replace("SBD", ""))
